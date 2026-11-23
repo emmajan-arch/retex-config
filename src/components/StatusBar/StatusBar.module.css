@@ -1,0 +1,81 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-14) var(--space-24);
+  background: var(--sem-bg-header);
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--line-height-22);
+}
+
+.timeText {
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-22);
+  color: var(--sem-text-on-dark);
+  white-space: nowrap;
+}
+
+.levels {
+  display: block;
+}
+
+.levelsSkeleton {
+  display: flex;
+  align-items: center;
+  gap: var(--sk-gap-levels);
+}
+
+.cell,
+.wifi {
+  height: var(--sk-h-icon-level);
+  border-radius: calc(var(--sk-h-icon-level) / 2);
+}
+
+.cell {
+  width: var(--sk-w-icon-cell);
+}
+
+.wifi {
+  width: var(--sk-w-icon-wifi);
+}
+
+.battery {
+  position: relative;
+  display: block;
+  width: calc(var(--sk-w-battery) + var(--sk-w-battery-cap) - var(--border-width));
+  height: var(--sk-h-battery);
+}
+
+/* Contour à 35 % de la maquette, rendu en couleur pleine */
+.batteryBorder {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--sk-w-battery);
+  border: var(--border-width) solid var(--sem-skeleton-battery-border);
+  border-radius: var(--sk-radius-battery);
+}
+
+.batteryCap {
+  position: absolute;
+  left: calc(var(--sk-w-battery) + var(--border-width));
+  top: calc((var(--sk-h-battery) - var(--sk-h-battery-cap)) / 2);
+  width: var(--sk-w-battery-cap);
+  height: var(--sk-h-battery-cap);
+  border-radius: var(--sk-radius-battery-cap);
+}
+
+.batteryFill {
+  position: absolute;
+  left: var(--sk-battery-inset);
+  top: var(--sk-battery-inset);
+  width: calc(var(--sk-w-battery) - var(--sk-battery-inset) * 2);
+  height: calc(var(--sk-h-battery) - var(--sk-battery-inset) * 2);
+  border-radius: var(--sk-radius-battery-fill);
+  background: var(--sem-text-on-dark);
+}

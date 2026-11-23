@@ -1,0 +1,123 @@
+.card {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: var(--sem-bg-surface);
+  /* Bordure intérieure comme dans Figma : n'ajoute pas de hauteur */
+  box-shadow: inset 0 0 0 var(--border-width) var(--sem-border-card), var(--shadow-card);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+  width: 100%;
+  padding: var(--space-16);
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.summaryExpanded {
+  padding-bottom: var(--space-12);
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-pill);
+  background: var(--sem-bg-subtle);
+  color: var(--sem-text-brand);
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-12);
+  white-space: nowrap;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.times {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.departure,
+.arrival {
+  font-size: var(--font-size-24);
+  line-height: var(--line-height-28);
+}
+
+.departure {
+  width: var(--size-time-column);
+  color: var(--sem-text-brand);
+  font-weight: var(--font-weight-bold);
+}
+
+.arrival {
+  color: var(--sem-text-brand-soft);
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  color: var(--sem-text-muted);
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-12);
+  letter-spacing: var(--letter-spacing-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fareGroup {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: var(--space-8);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: 0 var(--space-16) var(--space-16);
+  animation: reveal var(--motion-expand-duration) var(--motion-ease-standard);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--space-4) * -1));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+}

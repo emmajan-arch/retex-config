@@ -1,0 +1,70 @@
+.line {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  height: var(--sk-line);
+  width: var(--sk-width);
+}
+
+.bar,
+.shape {
+  display: block;
+  animation-name: shimmer;
+  animation-duration: var(--motion-skeleton-duration);
+  animation-iteration-count: infinite;
+  animation-timing-function: var(--motion-ease-standard);
+  animation-delay: calc(var(--motion-skeleton-wave-offset) + var(--sk-y, 0) * var(--motion-skeleton-wave-step));
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  top: var(--sk-top);
+  width: 100%;
+  height: var(--sk-bar);
+  border-radius: calc(var(--sk-bar) / 2);
+}
+
+.light {
+  --sk-base: var(--sem-skeleton-base);
+  --sk-highlight: var(--sem-skeleton-highlight);
+  background: var(--sk-base);
+}
+
+.dark {
+  --sk-base: var(--sem-skeleton-base-on-dark);
+  --sk-highlight: var(--sem-skeleton-highlight-on-dark);
+  background: var(--sk-base);
+}
+
+/* Profil Figma : plateau, montée 18 %, descente 18 %, plateau */
+@keyframes shimmer {
+  0% { background: var(--sk-base); }
+  18% { background: var(--sk-highlight); }
+  36% { background: var(--sk-base); }
+  100% { background: var(--sk-base); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar,
+  .shape {
+    animation: none;
+  }
+}
+
+.departure { --sk-line: var(--sk-time-line); --sk-bar: var(--sk-time-bar); --sk-top: var(--sk-time-top); --sk-width: var(--sk-w-departure); }
+.arrival { --sk-line: var(--sk-time-line); --sk-bar: var(--sk-time-bar); --sk-top: var(--sk-time-top); --sk-width: var(--sk-w-arrival); }
+.duration { --sk-line: var(--sk-meta-line); --sk-bar: var(--sk-meta-bar); --sk-top: var(--sk-meta-top); --sk-width: var(--sk-w-duration); }
+.direct { --sk-line: var(--sk-meta-line); --sk-bar: var(--sk-meta-bar); --sk-top: var(--sk-meta-top); --sk-width: var(--sk-w-direct); }
+.badge { --sk-line: var(--sk-meta-line); --sk-bar: var(--sk-meta-bar); --sk-top: var(--sk-meta-top); --sk-width: var(--sk-w-badge); }
+.fareLabel { --sk-line: var(--sk-fare-label-line); --sk-bar: var(--sk-fare-label-bar); --sk-top: var(--sk-fare-label-top); --sk-width: var(--sk-w-fare-label); }
+.farePrice { --sk-line: var(--sk-fare-price-line); --sk-bar: var(--sk-fare-price-bar); --sk-top: var(--sk-fare-price-top); --sk-width: var(--sk-w-fare-price); }
+.farePriceAlt { --sk-line: var(--sk-fare-price-line); --sk-bar: var(--sk-fare-price-bar); --sk-top: var(--sk-fare-price-top); --sk-width: var(--sk-w-fare-price-alt); }
+.chipTravellers { --sk-line: var(--sk-chip-line); --sk-bar: var(--sk-chip-bar); --sk-top: var(--sk-chip-top); --sk-width: var(--sk-w-chip-travellers); }
+.chipLuggage { --sk-line: var(--sk-chip-line); --sk-bar: var(--sk-chip-bar); --sk-top: var(--sk-chip-top); --sk-width: var(--sk-w-chip-luggage); }
+.title { --sk-line: var(--sk-title-line); --sk-bar: var(--sk-title-bar); --sk-top: var(--sk-title-top); --sk-width: var(--sk-w-title); }
+.subtitle { --sk-line: var(--sk-subtitle-line); --sk-bar: var(--sk-subtitle-bar); --sk-top: var(--sk-subtitle-top); --sk-width: var(--sk-w-subtitle); }
+.statusTime { --sk-line: var(--sk-status-line); --sk-bar: var(--sk-status-bar); --sk-top: var(--sk-status-top); --sk-width: var(--sk-w-status-time); }
+.dividerLabel { --sk-line: var(--sk-divider-line); --sk-bar: var(--sk-divider-bar); --sk-top: var(--sk-divider-top); --sk-width: var(--sk-w-divider-label); }
+.tabDay { --sk-line: var(--sk-tab-day-line); --sk-bar: var(--sk-tab-day-bar); --sk-top: var(--sk-tab-day-top); --sk-width: var(--sk-w-tab-day); }
+.tabPrice { --sk-line: var(--sk-tab-price-line); --sk-bar: var(--sk-tab-price-bar); --sk-top: var(--sk-tab-price-top); --sk-width: var(--sk-w-tab-price); }

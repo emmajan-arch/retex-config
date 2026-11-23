@@ -1,0 +1,14 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "@fontsource/work-sans/400.css";
+import "@fontsource/work-sans/500.css";
+import "@fontsource/work-sans/600.css";
+import "@fontsource/work-sans/700.css";
+import "./theme/global.css";
+import { FlightSelection } from "./screens/FlightSelection";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <FlightSelection />
+  </StrictMode>,
+);

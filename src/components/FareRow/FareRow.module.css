@@ -1,0 +1,47 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-12);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--motion-expand-duration) var(--motion-ease-standard);
+}
+
+.selected {
+  background: var(--sem-bg-subtle);
+}
+
+.texts {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.name {
+  color: var(--sem-text-fare-name);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  white-space: nowrap;
+}
+
+.description {
+  color: var(--sem-text-default);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
+}
+
+.price {
+  flex-shrink: 0;
+  color: var(--sem-text-default);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  white-space: nowrap;
+}

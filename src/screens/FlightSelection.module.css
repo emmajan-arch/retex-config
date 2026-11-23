@@ -1,0 +1,31 @@
+.screen {
+  width: 100%;
+  max-width: var(--size-screen);
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--sem-bg-page);
+}
+
+/* En-tête fixe : la liste défile dessous, comme sur la maquette */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--sem-bg-page);
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--space-4);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-12) var(--space-16);
+}

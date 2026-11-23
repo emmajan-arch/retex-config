@@ -1,0 +1,70 @@
+.strip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-16) var(--space-16) var(--space-4);
+  overflow-x: auto;
+  overflow-y: clip;
+  background: var(--sem-bg-page);
+}
+
+.item {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.tab {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--sem-bg-surface);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  transition: background-color var(--motion-expand-duration) var(--motion-ease-standard);
+}
+
+.day {
+  color: var(--sem-text-muted);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-14);
+}
+
+.price {
+  color: var(--sem-text-brand);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-16);
+}
+
+.selected {
+  background: var(--sem-bg-selected);
+}
+
+.selected .day,
+.selected .price {
+  color: var(--sem-text-on-selected);
+}
+
+.selected .price {
+  font-weight: var(--font-weight-bold);
+}
+
+.skeletonTab {
+  cursor: default;
+}
+
+.skeletonSelected {
+  background: var(--sem-skeleton-tab-selected);
+}
+
+.skeletonTab:nth-child(2) .skDay { --sk-width: var(--sk-w-tab-day-2); }
+.skeletonTab:nth-child(3) .skDay { --sk-width: var(--sk-w-tab-day-3); }
+.skeletonTab:nth-child(4) .skDay { --sk-width: var(--sk-w-tab-day-4); }
+.skeletonTab:nth-child(5) .skDay { --sk-width: var(--sk-w-tab-day-5); }
+.skeletonTab:nth-child(6) .skDay { --sk-width: var(--sk-w-tab-day-6); }
+.skeletonTab:nth-child(3) .skPrice { --sk-width: var(--sk-w-tab-price-3); }
