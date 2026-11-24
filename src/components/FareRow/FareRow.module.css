@@ -25,7 +25,7 @@
   color: var(--sem-text-fare-name);
   font-size: var(--font-size-18);
   font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-normal);
+  line-height: var(--line-height-21);
   white-space: nowrap;
 }
 
@@ -33,7 +33,7 @@
   color: var(--sem-text-default);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-tight);
+  line-height: var(--line-height-18);
   white-space: nowrap;
 }
 
@@ -42,6 +42,6 @@
   color: var(--sem-text-default);
   font-size: var(--font-size-18);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-normal);
+  line-height: var(--line-height-21);
   white-space: nowrap;
 }

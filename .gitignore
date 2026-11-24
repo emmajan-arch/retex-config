@@ -5,3 +5,9 @@
 dist/
 node_modules/
 tsconfig.tsbuildinfo
+
+# Fichiers locaux, hors GitHub
+docs/
+.claude/
+CLAUDE.md
+tools/

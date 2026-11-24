@@ -8,14 +8,12 @@ npm run dev      # http://localhost:5180
 npm run build    # vérification TypeScript + build
 ```
 
-Écran actuel : sélection de vol (maquette Figma « Piste 1 »). Voir `docs/decisions/0001-ecran-selection-vol.md`.
+Écran actuel : sélection de vol (maquette Figma « Piste 1 »).
 
 ## Structure
 
-- `docs/` : documentation (architecture, ADR, runbooks, design system).
-  - `decisions/` : journal des décisions techniques.
-- `.claude/` : configuration IA du projet.
-  - `hooks/` : garde-fous et scripts d'automatisation.
-  - `skills/` : workflows IA réutilisables, un dossier par skill avec un `SKILL.md`.
-- `tools/` : scripts utilitaires et prompts modulaires.
-- `src/` : code source de l'application.
+- `src/theme/` : tokens de design et styles globaux.
+- `src/components/` : composants de l'écran (carte vol, onglets de dates, skeleton…).
+- `src/screens/` : écran de sélection de vol.
+- `src/mocks/` : dates, vols et prix simulés.
+- `src/assets/` : icônes exportées de Figma.

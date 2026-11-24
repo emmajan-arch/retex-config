@@ -21,7 +21,8 @@ export type Flight = {
   badge?: string;
   /** "from" : un bloc « Dès xx € ». "split" : deux blocs de prix côte à côte. */
   display: "from" | "split";
-  fares: [Fare, Fare];
+  /** Eco, Eco +, Premium. Les cartes "split" affichent les deux premiers. */
+  fares: Fare[];
 };
 
 export type Day = {
@@ -66,20 +67,23 @@ const WEEK: Array<{ iso: string; minPrice: number }> = [
 
 export const DEFAULT_DAY = "2025-08-20";
 
-const DESCRIPTION = "Texte explicatif du tarif";
+/** Écarts de prix entre tarifs, repris de la maquette (62 € · 108 € · 208 €) */
+const ECO_PLUS_EXTRA = 46;
+const PREMIUM_EXTRA = 146;
 
-const fares = (eco: number, premium: number): [Fare, Fare] => [
-  { name: "Eco", description: DESCRIPTION, price: eco },
-  { name: "Premium", description: DESCRIPTION, price: premium },
+const fares = (eco: number, ecoPlus = eco + ECO_PLUS_EXTRA, premium = eco + PREMIUM_EXTRA): Fare[] => [
+  { name: "Eco", description: "Bagage cabine inclus", price: eco },
+  { name: "Eco +", description: "Bagages cabine et soute inclus", price: ecoPlus },
+  { name: "Premium", description: "Cabine + soute · Accès prioritaire", price: premium },
 ];
 
 /** Vols du 20 août, identiques à la maquette */
 const REFERENCE_FLIGHTS: Flight[] = [
-  { id: "f1", departure: "09:00", arrival: "10:35", duration: "1h35", display: "from", fares: fares(62, 108) },
-  { id: "f2", departure: "10:30", arrival: "12:05", duration: "1h35", display: "from", fares: fares(102, 148) },
-  { id: "f3", departure: "13:00", arrival: "14:35", duration: "1h35", display: "from", fares: fares(99, 145) },
-  { id: "f4", departure: "15:00", arrival: "16:35", duration: "1h35", badge: "Vol direct", display: "from", fares: fares(62, 108) },
-  { id: "f5", departure: "17:00", arrival: "18:35", duration: "1h35", directLabel: true, display: "from", fares: fares(62, 108) },
+  { id: "f1", departure: "09:00", arrival: "10:35", duration: "1h35", display: "from", fares: fares(62) },
+  { id: "f2", departure: "10:30", arrival: "12:05", duration: "1h35", display: "from", fares: fares(102) },
+  { id: "f3", departure: "13:00", arrival: "14:35", duration: "1h35", display: "from", fares: fares(99) },
+  { id: "f4", departure: "15:00", arrival: "16:35", duration: "1h35", badge: "Vol direct", display: "from", fares: fares(62) },
+  { id: "f5", departure: "17:00", arrival: "18:35", duration: "1h35", directLabel: true, display: "from", fares: fares(62) },
   { id: "f6", departure: "17:00", arrival: "18:35", duration: "1h35", directLabel: true, display: "split", fares: fares(62, 98) },
   { id: "f7", departure: "17:00", arrival: "18:35", duration: "1h35", directLabel: true, display: "split", fares: fares(62, 98) },
 ];
@@ -127,14 +131,13 @@ const flightsFor = (iso: string): Flight[] => {
     const shift = Math.round(random() * 4 - 2) * 15;
     // Le vol le moins cher du jour vaut exactement le prix affiché dans l'onglet
     const extra = index === 0 ? 0 : Math.round(random() * 30);
-    const [eco, premium] = flight.fares;
     const offset = minPrice - reference + extra;
     return {
       ...flight,
       id: `${iso}-${flight.id}`,
       departure: shiftTime(flight.departure, shift),
       arrival: shiftTime(flight.arrival, shift),
-      fares: fares(eco.price + offset, premium.price + offset),
+      fares: flight.fares.map((fare) => ({ ...fare, price: fare.price + offset })),
     };
   });
 };
